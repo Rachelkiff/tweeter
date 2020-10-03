@@ -1,15 +1,9 @@
 <template>
     <div id="grid-container">
-      <h2>Update your info</h2>
-     <p>New Email</p>
-     <input type="email" id="email-input" v-model="email">
-     <p>New Username</p>
-     <input type="username" id="username-input" v-model="username">
-     <p>New Password</p>
-     <input type="password" id="password-input" v-model="password">
-     <p>New Bio</p>
-      <textarea id="bio-input" v-model="bio" ></textarea>
-      <h3 @click="editUser">Submit Changes</h3>
+        <hr>
+      <h3>Enter your friends username</h3>
+     <input type="viewUsers" id="viewusers-input" v-model="viewusers">
+        <h3 @click="viewUsers">Click to find friends!</h3>
       <h4>{{status}}</h4>
     </div>
 </template>
@@ -17,35 +11,30 @@
 <script>
 import axios from "axios"
 import cookies from "vue-cookies"
-
-
     export default {
-        name: "edituser",
-        data() {
+        name: "viewusers",
+        data () {
             return {
-               email: "",
-               username: "",
-               password: "",
-               bio:"",
-               status:"",
+             viewusers: "",
+             status: "",
             }
         },
-          methods: {
-          editUser: function() {
+         methods: {
+          viewUsers: function() {
             this.status = "loading"
               axios.request({
-                  method: "PATCH",
+                  method: "get",
                   url: "https://tweeterest.ml/api/users",
                   headers: {
                       "Content-Type": "application/json",
                       "X-Api-Key": "Xc7IyBHOsKWUlmfQLaPXmGEhglZ54MbKDxNjIqNOUG8fE"
                   },
-                 data:{
+                   data:{
                   loginToken: cookies.get("session"),
-                  email: this.email,
-                  username: this.username,
-                  password: this.password,
-                  bio: this.bio,
+                   },
+                 params:{
+                  userId: 1,
+                  
             },
               
               }).then((response) => {
@@ -59,8 +48,9 @@ import cookies from "vue-cookies"
             }
         },
     }
+ 
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
 </style>

@@ -1,8 +1,12 @@
 <template>
     <div id="grid-container">
-     <p>Delete User</p>
-     <input type="text" id="delete-input" v-model="password">
-     <h2 @click="deleteUser"></h2>
+     <h2>Delete your profile</h2>
+     <p>Enter your username</p>
+     <input type="username" id="username-input" v-model="username">
+     <p>Password</p>
+     <input type="password" id="passworddelete-input" v-model="password">
+     <h3 @click="deleteUser">Delete Profile</h3>
+     <hr>
      
     </div>
 </template>
@@ -12,10 +16,11 @@ import axios from "axios"
 import cookies from "vue-cookies"
 
     export default {
-        name: "tweeterUsers",
+        name: "deleteUsers",
         data() {
             return {
                password: "",
+               username: "",
             }
         },
           methods: {
@@ -29,7 +34,8 @@ import cookies from "vue-cookies"
                   },
                  data:{
                    loginToken: cookies.get("session"),
-                   password: this.password
+                   password: this.password,
+                   username: this.username
                    }
               }).then((response) => {
                 console.log(response)

@@ -1,23 +1,27 @@
 <template>
   <div>
-    <router-link to="/login">Login</router-link>
+  <router-link to="/login">Log out</router-link>
     
- <h1>View your Profile!</h1>
- <tweeter-users></tweeter-users>
+ <h1>Welcome!</h1>
+ <user-profile></user-profile>
+ <delete-users></delete-users>
  <edit-user></edit-user>
+ <view-users></view-users>
 
   </div>
 </template>
 
 <script>
-import TweeterUsers from "../components/tweeterUsers.vue"
-import EditUser from "../components/EditUser.vue"
+import DeleteUsers from "../components/DeleteUsers.vue";
+import EditUser from "../components/EditUser.vue";
+import ViewUsers from "../components/ViewUsers.vue"
 
 export default {
   name: "profile-page",
   components: {
-    TweeterUsers,
-    EditUser
+    DeleteUsers,
+    EditUser,
+    ViewUsers
   },
 }
 </script>
