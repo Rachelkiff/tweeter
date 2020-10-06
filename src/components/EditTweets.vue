@@ -1,8 +1,16 @@
 <template>
     <div id="grid-container">
-     <p>Enter your new Tweet!</p>
-      <textarea id="tweet-input" v-model="createtweets" ></textarea>
-      <h3 @click="createTweet">Submit Tweet</h3>
+        <hr>
+      <h2>Edit your Tweet</h2>
+     <p>Email</p>
+     <input type="email" id="email-input" v-model="email">
+     <p>Username</p>
+     <input type="username" id="username-input" v-model="username">
+     <p>Password</p>
+     <input type="password" id="password-input" v-model="password">
+     <p>Bio</p>
+      <textarea id="bio-input" v-model="bio" ></textarea>
+      <h3 @click="editTweets">Submit Changes</h3>
       <h4>{{status}}</h4>
     </div>
 </template>
@@ -13,18 +21,21 @@ import cookies from "vue-cookies"
 
 
     export default {
-        name: "createTweets",
+        name: "edittweets",
         data() {
             return {
-               createtweets:"",
+               email: "",
+               username: "",
+               password: "",
+               bio:"",
                status:"",
             }
         },
           methods: {
-          createTweet: function() {
+          editTweets: function() {
             this.status = "loading"
               axios.request({
-                  method: "POST",
+                  method: "PATCH",
                   url: "https://tweeterest.ml/api/users",
                   headers: {
                       "Content-Type": "application/json",
@@ -32,7 +43,10 @@ import cookies from "vue-cookies"
                   },
                  data:{
                   loginToken: cookies.get("session"),
-                  createTweets: this.createTweets
+                  email: this.email,
+                  username: this.username,
+                  password: this.password,
+                  bio: this.bio,
             },
               
               }).then((response) => {
