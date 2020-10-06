@@ -5,7 +5,7 @@
      <input type="username" id="username-input" v-model="username">
      <p>Password</p>
      <input type="password" id="passworddelete-input" v-model="password">
-     <h3 @click="deleteUser">Delete Profile</h3>
+   <button id="delete-button"><h3 @click="deleteUser">Delete Profile</h3></button>  
      <hr>
      
     </div>
@@ -51,5 +51,20 @@ import cookies from "vue-cookies"
 </script>
 
 <style scoped>
+* {
+  margin: 0;
+  padding:0;
+}
+#grid.container{
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr;
+  justify-items: center;
+  align-items: center;
+}
+#delete-button {
+  justify-content: center;
+  align-content: center;
+  background-color: blue;
+}
 
 </style>

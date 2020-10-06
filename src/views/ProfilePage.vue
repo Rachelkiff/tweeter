@@ -3,7 +3,6 @@
   <router-link to="/login">Log out</router-link>
     
  <h1>Welcome!</h1>
- <user-profile></user-profile>
  <delete-users></delete-users>
  <edit-user></edit-user>
  <view-users></view-users>

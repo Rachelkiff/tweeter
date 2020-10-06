@@ -1,7 +1,7 @@
 <template>
     <div id="grid-container">
         <hr>
-      <h3>Enter your friends username</h3>
+      <h2>Find a friend!</h2>
      <input type="viewUsers" id="viewusers-input" v-model="viewusers">
         <h3 @click="viewUsers">Click to find friends!</h3>
       <h4>{{status}}</h4>
