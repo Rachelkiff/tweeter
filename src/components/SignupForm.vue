@@ -11,6 +11,7 @@
      <p>Birthday</p>
      <input type="text" id="birthdate-input" v-model="birthdate">
      <h2 @click="signupUser">Sign-up</h2>
+    
      
     </div>
 </template>

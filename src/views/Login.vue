@@ -8,6 +8,7 @@
     <h2 @click="loginUser">login</h2>
     <h3>{{loginStatus}}</h3>
     <router-link to="/profilepage"></router-link>
+    
     </div>
 </template>
 

@@ -25,14 +25,14 @@ import cookies from "vue-cookies"
             this.status = "loading"
               axios.request({
                   method: "POST",
-                  url: "https://tweeterest.ml/api/users",
+                  url: "https://tweeterest.ml/api/tweets",
                   headers: {
                       "Content-Type": "application/json",
                       "X-Api-Key": "Xc7IyBHOsKWUlmfQLaPXmGEhglZ54MbKDxNjIqNOUG8fE"
                   },
                  data:{
                   loginToken: cookies.get("session"),
-                  createTweets: this.createTweets
+                  content: this.createtweets
             },
               
               }).then((response) => {

@@ -4,24 +4,24 @@
     
  <h1>Welcome!</h1>
  <create-tweets></create-tweets>
- <edit-tweets></edit-tweets>
- <delete-tweets></delete-tweets>
+ <view-tweets></view-tweets>
+
 
   </div>
 </template>
 
 <script>
 import CreateTweets from "../components/CreateTweets.vue";
-import EditTweets from "../components/EditTweets.vue";
-import DeleteTweets from "../components/DeleteTweets.vue"
+import ViewTweets from "../components/ViewTweets.vue";
+
 
 
 export default {
   name: "feed-page",
   components: {
      CreateTweets,
-     EditTweets,
-     DeleteTweets
+     ViewTweets,
+     
   },
 }
 </script>
