@@ -3,7 +3,7 @@
         <hr>
       <h2>Find a friend!</h2>
      <input type="viewUsers" id="viewusers-input" v-model="viewusers">
-        <h3 @click="viewUsers">Click to find friends!</h3>
+        <h3 @click="viewUsers"></h3>
       <h4>{{status}}</h4>
     </div>
 </template>
@@ -42,7 +42,7 @@ import cookies from "vue-cookies"
                 this.status ="Updated!"
               }).catch((error) =>{
                 console.log(error)
-                this.status = "Error"
+                this.status = "Something happened!"
               })
                 
             }

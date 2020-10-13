@@ -8,6 +8,7 @@
     <h2 @click="loginUser">login</h2>
     <h3>{{loginStatus}}</h3>
     <router-link to="/profilepage"></router-link>
+    <router-link to="/signupform"></router-link>
     
     </div>
 </template>
@@ -39,11 +40,12 @@ import cookies from "vue-cookies"
                   }
               }).then((response)=>{
                   //check if login token sent
-                  this.$router.push("/profilepage")
+                  this.$router.push("/feedpage")
                   console.log(response)
                   this.loginStatus = "Success"
                   cookies.set("session", response.data.loginToken)
-                  //send user to "home page"
+                  cookies.set ("userId", response.data.userId)
+                   //send user to "home page"
               }).catch((error)=>{
                   // show user login failure
                   console.log(error)

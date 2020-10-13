@@ -2,6 +2,7 @@
   <div>
   <router-link to="/login">Log out</router-link>
   <router-link to="/feedpage">check your feed</router-link>
+ 
     
  <h1>Welcome!</h1>
  <delete-users></delete-users>
