@@ -3,31 +3,54 @@
     <router-link to="/profilepage">Check your feed!</router-link>
     <h1>Welcome to the Feed Page</h1>
     <tweet-form></tweet-form>
-
-    
-    
+    <button @click="getTweets">Refresh Tweety tweets</button>
+    <div v-for="tweet in tweets" :key="tweet.tweetId"></div>
+    <tweet-card :tweetObject="tweet"></tweet-card>
   </div>
 </template>
 
 <script>
-import TweetForm from "../components/TweetForm.vue"
+import axios from "axios";
+import TweetForm from "../components/TweetForm.vue";
+import TweetCard from "../components/Tweet.vue";
 
 export default {
   name: "feed-page",
-  
-  components: {
-   TweetForm,
-    
+  data() {
+    return {
+      tweets: []
+    };
   },
 
+  components: {
+    TweetForm,
+    TweetCard
+  },
+  methods: {
+    getTweets: function() {
+      axios.request({
+          method: "GET",
+          url: "https://tweeterest.ml/api/tweets",
+          headers: {
+            "Content-Type": "application/json",
+            "X-Api-Key": "Xc7IyBHOsKWUlmfQLaPXmGEhglZ54MbKDxNjIqNOUG8fE"
+          }
+        })
+        .then(response => {
+          console.log(response);
+          this.tweets = response.data;
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
   }
- 
+};
 </script>
 
 <style>
-.tweet-container{
+.tweet-container {
   margin: 10px;
-  padding:0;
+  padding: 0;
 }
-
 </style>
