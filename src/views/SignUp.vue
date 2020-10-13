@@ -1,9 +1,8 @@
 <template>
   <div class="container">
-    <login-form v-if="login"></login-form>
-  <signup-form v-else></signup-form>
-  <p @click="login = !login" class="clickable-text" v-if="!login">I have an account</p>
-  <p @click="login = !login" class="clickable-text" v-else>Sign up for a new account</p>
+    <login-form ></login-form>
+   <signup-form ></signup-form>
+ 
  
 
   </div>
@@ -18,5 +17,6 @@ export default {
     SignupForm,
     LoginForm
   },
+
 }
 </script>

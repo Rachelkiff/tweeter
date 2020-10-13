@@ -9,8 +9,10 @@
 <script>
 import axios from "axios";
 import cookies from "vue-cookies";
+
 export default {
   name: "tweet-form",
+  
   data() {
     return {
       tweetContent: "",

@@ -1,8 +1,9 @@
 <template>
   <div>
-    <router-link to="/profilepage">Check your feed!</router-link>
-    <h1>Welcome to the Feed Page</h1>
+    <router-link to="/profilepage">View other users!</router-link>
+    <h1>Feed Page</h1>
     <tweet-form></tweet-form>
+    
     <button @click="getTweets">Refresh Tweety tweets</button>
     <div v-for="tweet in tweets" :key="tweet.tweetId"></div>
     <tweet-card :tweetObject="tweet"></tweet-card>
@@ -26,11 +27,14 @@ export default {
     TweetForm,
     TweetCard
   },
+  mounted: function (){
+    this.getTweets();
+  },
   methods: {
     getTweets: function() {
       axios.request({
-          method: "GET",
           url: "https://tweeterest.ml/api/tweets",
+          method: "GET",
           headers: {
             "Content-Type": "application/json",
             "X-Api-Key": "Xc7IyBHOsKWUlmfQLaPXmGEhglZ54MbKDxNjIqNOUG8fE"
@@ -39,8 +43,7 @@ export default {
         .then(response => {
           console.log(response);
           this.tweets = response.data;
-        })
-        .catch(error => {
+        }).catch(error => {
           console.log(error);
         });
     }
