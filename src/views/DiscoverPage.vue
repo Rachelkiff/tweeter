@@ -7,7 +7,7 @@
    <comment-card :commentObject="comment"> </comment-card>
     </div>
     
- <h1>Find your Friends!</h1>
+
 
 
   </div>

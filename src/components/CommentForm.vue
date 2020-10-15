@@ -17,6 +17,13 @@ import cookies from "vue-cookies";
             commentContent: "",
             commentStatus:""
     }
+  
+  },
+  props: {
+    tweetId: {
+      type: Number,
+       
+    },
   },
   methods: {
     postComment: function() {
@@ -29,7 +36,7 @@ import cookies from "vue-cookies";
             "X-Api-Key": "Xc7IyBHOsKWUlmfQLaPXmGEhglZ54MbKDxNjIqNOUG8fE"
           },
           data: {
-           commentContent: this.commentContent,
+           content: this.commentContent,
            loginToken: cookies.get("session"),
            tweetId: this.tweetId
            

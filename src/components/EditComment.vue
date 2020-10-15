@@ -41,6 +41,7 @@ import axios from "axios";
             }
         }).then(response => {
           console.log(response);
+          this.$emit('update-comment', this.commentContent)
           this.commentContent = "Comment edit successful!"
         }).catch(error => {
           console.log(error);

@@ -1,10 +1,15 @@
 <template>
     <div id="grid-container">
         <hr>
-      <h2>Find a friend!</h2>
-     <input type="viewUsers" id="viewusers-input" v-model="viewusers">
-        <h3 @click="viewUsers"></h3>
-      <h4>{{status}}</h4>
+      
+     <h3 @click="viewUsers">Find a friend</h3>
+     <div v-for="user in users" :key="user.userId">
+       <h4>{{user.username}}</h4> 
+       <button @click="followUser(user.userId)">Follow</button>
+       <button @click="unfollowUser(user.userId)">unFollow</button>
+
+       </div>
+      
     </div>
 </template>
 
@@ -17,10 +22,12 @@ import cookies from "vue-cookies"
             return {
              viewusers: "",
              status: "",
+             users: []
             }
         },
          methods: {
           viewUsers: function() {
+
             this.status = "loading"
               axios.request({
                   method: "get",
@@ -29,25 +36,67 @@ import cookies from "vue-cookies"
                       "Content-Type": "application/json",
                       "X-Api-Key": "Xc7IyBHOsKWUlmfQLaPXmGEhglZ54MbKDxNjIqNOUG8fE"
                   },
+
                    data:{
                   loginToken: cookies.get("session"),
                    },
-                 params:{
-                  userId: 1,
-                  
-            },
+           
               
               }).then((response) => {
                 console.log(response)
+                this.users = response.data
                 this.status ="Updated!"
               }).catch((error) =>{
                 console.log(error)
                 this.status = "Something happened!"
               })
                 
+            },
+            followUser(userId) {
+              axios.request({
+                  method: "post",
+                  url: "https://tweeterest.ml/api/follows",
+                  headers: {
+                      "Content-Type": "application/json",
+                      "X-Api-Key": "Xc7IyBHOsKWUlmfQLaPXmGEhglZ54MbKDxNjIqNOUG8fE"
+                  },
+
+                   data:{
+                  loginToken: cookies.get("session"),
+                  followId: userId
+                   },
+           
+              
+              }).then(() => {
+                
+              }).catch(() =>{
+               
+              })
+            },
+            unfollowUser(userId) {
+              axios.request({
+                  method: "delete",
+                  url: "https://tweeterest.ml/api/follows",
+                  headers: {
+                      "Content-Type": "application/json",
+                      "X-Api-Key": "Xc7IyBHOsKWUlmfQLaPXmGEhglZ54MbKDxNjIqNOUG8fE"
+                  },
+
+                   data:{
+                  loginToken: cookies.get("session"),
+                  followId: userId
+                   },
+           
+              
+              }).then(() => {
+                
+              }).catch(() =>{
+               
+              })
+            },
             }
-        },
-    }
+        }
+    
  
 </script>
 

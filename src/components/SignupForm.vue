@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h2>Sign-up</h2>
     <p>Email</p>
     <input type="text" id="email-input" v-model="email" />
     <p>Username</p>
@@ -10,7 +11,8 @@
     <textarea id="bio-input" v-model="bio"></textarea>
     <p>Birthday</p>
     <input type="text" id="birthdate-input" v-model="birthdate" />
-    <h2 @click="signupUser">Sign-up</h2>
+    <h3 @click="signupUser">Submit</h3>
+   <hr>
   </div>
 </template>
 

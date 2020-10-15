@@ -4,8 +4,10 @@
     <p>{{ content }}</p>
     <p>{{ tweetObject.createdAt }}</p>
     <delete-tweet v-if="isOwned" :tweetId="tweetObject.tweetId"> </delete-tweet>
+    <like-tweet :tweetId="tweetObject.tweetId" ></like-tweet>
     <edit-tweet @tweet-update="updateTweet" v-if="isOwned" :tweetId="tweetObject.tweetId"></edit-tweet>
-    <comment-form></comment-form>
+    <comment-form :tweetId="tweetObject.tweetId"></comment-form>
+    
   </div>
 </template>
 
@@ -13,14 +15,16 @@
 import DeleteTweet from "./DeleteTweet.vue";
 import cookies from "vue-cookies";
 import EditTweet from "./EditTweet.vue";
-import CommentForm from "./CommentForm.vue"
+import CommentForm from "./CommentForm.vue";
+import LikeTweet from "./LikeTweet.vue"
 
 export default {
   name: "page-tweet",
   components: {
     DeleteTweet,
     EditTweet,
-    CommentForm
+    CommentForm,
+    LikeTweet
   },
   props: {
     tweetObject: {

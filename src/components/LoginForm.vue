@@ -1,15 +1,15 @@
 <template>
     <div>
-    <h1>Login or Sign up</h1>
+    <h2>Login</h2>
     <p>Email</p>
     <input type="text" id="email-input" v-model="email">
     <p>Password</p>
     <input type="password" id="password" v-model="password">
-    <h2 @click="loginUser">login</h2>
+    <h2 @click="loginUser">Submit</h2>
     <h3>{{loginStatus}}</h3>
     <router-link to="/profilepage"></router-link>
     <router-link to="/signupform"></router-link>
-    
+    <hr>
     </div>
 </template>
 
