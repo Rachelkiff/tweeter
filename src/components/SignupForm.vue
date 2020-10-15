@@ -48,9 +48,9 @@ export default {
         })
         .then(response => {
           this.$router.push("/feedpage");
-          console.log(response)
+          console.log(response);
           cookies.set("session", response.data.loginToken);
-          cookies.set ("userId", response.data.userId)
+          cookies.set("userId", response.data.userId);
         })
         .catch(error => {
           console.log(error);

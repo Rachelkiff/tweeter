@@ -2,7 +2,7 @@
   <div>
     <h2>{{ tweetStatus }}</h2>
     <textarea v-model="tweetContent"></textarea>
-    <h2 @click="postTweet()">Post Tweet</h2>
+   <button><h2 @click="postTweet()">Post Tweet</h2></button> 
   </div>
 </template>
 
@@ -22,7 +22,7 @@ export default {
   methods: {
     postTweet: function() {
         this.tweetStatus = "Tweety tweets"
-      axios.request({
+         axios.request({
           method: "POST",
           url: "https://tweeterest.ml/api/tweets",
           headers: {
@@ -34,12 +34,10 @@ export default {
             content: this.tweetContent
           },
      
-        })
-        .then(response => {
+        }).then(response => {
           console.log(response);
-          this.tweetStatus = "Updated!";
-        })
-        .catch(error => {
+           this.tweetStatus = "Updated!";
+        }).catch(error => {
           console.log(error);
           this.tweetStatus = "Something happened!";
         });

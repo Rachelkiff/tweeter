@@ -4,9 +4,11 @@
     <h1>Feed Page</h1>
     <tweet-form></tweet-form>
     
+    
     <button @click="getTweets">Refresh Tweety tweets</button>
-    <div v-for="tweet in tweets" :key="tweet.tweetId"></div>
+    <div v-for="tweet in tweets" :key="tweet.tweetId">
     <tweet-card :tweetObject="tweet"></tweet-card>
+    </div>
   </div>
 </template>
 
@@ -14,6 +16,7 @@
 import axios from "axios";
 import TweetForm from "../components/TweetForm.vue";
 import TweetCard from "../components/Tweet.vue";
+
 
 export default {
   name: "feed-page",
@@ -25,7 +28,9 @@ export default {
 
   components: {
     TweetForm,
-    TweetCard
+    TweetCard,
+   
+   
   },
   mounted: function (){
     this.getTweets();

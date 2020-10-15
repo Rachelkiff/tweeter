@@ -1,24 +1,24 @@
 <template>
     <div>
-     <button><h3 @click="tweetDelete">Delete</h3></button>
+     <h3 @click="deleteComment">Delete comment</h3>
     </div>
 </template>
 
 <script>
-import axios from "axios";
 import cookies from "vue-cookies";
+import axios from "axios"
     export default {
-        name: "delete-tweet",
+        name: "delete-comment",
         props: {
-           tweetId:{
+           CommentId:{
                type: Number,
                required: true
            }
         },
         methods: {
-          tweetDelete: function() {
-         axios.request({
-          url: "https://tweeterest.ml/api/tweets",
+            deleteComment: function() {
+                 axios.request({
+          url: "https://tweeterest.ml/api/comments",
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
@@ -26,7 +26,7 @@ import cookies from "vue-cookies";
           },
           data: {
               loginToken: cookies.get("session"),
-              tweetId: this.tweetId
+              commentId: this.commentId
 
           }
         }).then(response => {
